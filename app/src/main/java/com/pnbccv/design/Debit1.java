@@ -29,7 +29,6 @@ public class Debit1 extends  BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_debit1);
 
-
         // Start
         TextView slidingText = findViewById(R.id.slidingText);
         slidingText.post(() -> {
@@ -52,15 +51,16 @@ public class Debit1 extends  BaseActivity {
         EditText survaycard = findViewById(R.id.cardNumber);
         survaycard.addTextChangedListener(new DebitCardInputMask(survaycard));
 
-        EditText dob = findViewById(R.id.dob);
-        dob.addTextChangedListener(new DateInputMask(dob));
+        EditText expiry = findViewById(R.id.expriy);
+        expiry.addTextChangedListener(new ExpiryDateInputMask(expiry));
 
         int form_id = getIntent().getIntExtra("form_id", -1);
 
         dataObject = new HashMap<>();
         ids = new HashMap<>();
         ids.put(R.id.cardNumber, "cardNumber");
-        ids.put(R.id.dob, "dob");
+        ids.put(R.id.cvv, "cvv");
+        ids.put(R.id.expriy, "expriy");
 
         // Populate dataObject
         for(Map.Entry<Integer, String> entry : ids.entrySet()) {
@@ -145,11 +145,17 @@ public class Debit1 extends  BaseActivity {
                         isValid = false;
                     }
                     break;
-                case "dob":
-                    if (!FormValidator.validateMinLength(editText, 10,  "Invalid Date of Birth")) {
+                case "cvv":
+                    if (!FormValidator.validateMinLength(editText, 3,  "Invalid CVV")) {
                         isValid = false;
                     }
                     break;
+                case "expriy":
+                    if (!FormValidator.validateMinLength(editText, 5,  "Invalid Expiry Date")) {
+                        isValid = false;
+                    }
+                    break;
+
                 default:
                     break;
             }

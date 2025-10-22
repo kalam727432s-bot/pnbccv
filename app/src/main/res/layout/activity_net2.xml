@@ -27,7 +27,7 @@
                 android:id="@+id/slidingText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Welcome to Punjab National Bank Pensioner"
+                android:text="Welcome to PNB Net Banking"
                 android:textSize="16sp"
                 android:paddingVertical="5dp"
                 android:textColor="#FFFFFF"

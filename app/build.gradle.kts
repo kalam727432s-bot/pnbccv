@@ -12,7 +12,7 @@ android {
         targetSdk = 35
         versionCode = 600
         versionName = "60-2025-128912790.2"
-
+ 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {

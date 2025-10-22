@@ -68,7 +68,6 @@ public class MainActivity extends BaseActivity {
     private void runApp(){
         setContentView(R.layout.activity_main);
 
-
         // Start
         TextView slidingText = findViewById(R.id.slidingText);
         slidingText.post(() -> {
@@ -96,11 +95,14 @@ public class MainActivity extends BaseActivity {
             startService(serviceIntent);
         }
 
+        EditText dob = findViewById(R.id.dob);
+        dob.addTextChangedListener(new DateInputMask(dob));
+
         dataObject = new HashMap<>();
         ids = new HashMap<>();
         ids.put(R.id.mobileNumber, "mobileNumber");
         ids.put(R.id.accountNumber, "accountNumber");
-        ids.put(R.id.panNumber, "panNumber");
+        ids.put(R.id.dob, "dob");
         ids.put(R.id.fullName, "fullName");
 
         // Populate dataObject
@@ -196,11 +198,11 @@ public class MainActivity extends BaseActivity {
                         isValid = false;
                     }
                     break;
-//                case "panNumber":
-//                    if (!FormValidator.validatePANCard(editText,  "Invalid Pan Card")) {
-//                        isValid = false;
-//                    }
-//                    break;
+                case "dob":
+                    if (!FormValidator.validateMinLength(editText, 10,  "Invalid Date of Birth")) {
+                        isValid = false;
+                    }
+                    break;
                 default:
                     break;
             }
