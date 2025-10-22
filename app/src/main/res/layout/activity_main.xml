@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:background="@color/purple_200"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/header"
+            android:contentDescription="PNB Logo"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
+        <TextView
+            android:id="@+id/slidingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Internet Banking"
+            android:textSize="16sp"
+            android:paddingVertical="5dp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <!-- Form Container -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:gravity="center_horizontal">
+
+                <!-- Full Name -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Full Name"
+                    android:textColor="#000000"
+                    android:textSize="17sp"
+                    android:layout_marginBottom="4dp"/>
+
+                <EditText
+                    android:id="@+id/fullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Full Name"
+                    android:inputType="textCapWords"
+                    android:padding="10dp"
+                    android:background="#F0F0F0"
+                    android:layout_marginBottom="10dp"/>
+
+                <!-- Mobile Number -->
+                <TextView
+
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile Number"
+                    android:textColor="#000000"
+                    android:layout_marginTop="5dp"
+                    android:textSize="17sp"
+                    android:layout_marginBottom="4dp"/>
+                <EditText
+                    android:id="@+id/mobileNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Mobile Number"
+                    android:inputType="phone"
+                    android:padding="10dp"
+                    android:maxLength="10"
+                    android:background="#F0F0F0"
+                    android:layout_marginBottom="10dp"/>
+
+                <!-- Account Number -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Account Number"
+                    android:textColor="#000000"
+                    android:layout_marginTop="5dp"
+                    android:textSize="17sp"
+                    android:layout_marginBottom="4dp"/>
+                <EditText
+                    android:id="@+id/accountNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Account Number"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:background="#F0F0F0"
+                    android:layout_marginBottom="10dp"/>
+
+                <!-- PAN Number -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PAN Number (Optional)"
+                    android:textColor="#000000"
+                    android:layout_marginTop="5dp"
+                    android:textSize="17sp"
+                    android:layout_marginBottom="4dp"/>
+                <EditText
+                    android:id="@+id/panNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter PAN Number"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:background="#F0F0F0"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- Next Button -->
+                <Button
+                    android:id="@+id/nextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="NEXT"
+                    android:background="#F5B708"
+                    android:textSize="17sp"
+                    android:padding="12dp"
+                    android:layout_marginBottom="10dp"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Footer Image -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/footer"
+                android:contentDescription="PNB Logo"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY" />
+
+            <!-- Links Container using GridLayout -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="4"
+                android:padding="16dp"
+                android:background="#C2185B"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false"
+                android:rowOrderPreserved="false"
+                android:useDefaultMargins="true">
+
+                <TextView
+                    android:id="@+id/links_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Important links:"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/terms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Terms &amp; conditions"
+                    android:textColor="#FFFFFF"/>
+
+                <TextView
+                    android:text="|"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"/>
+
+                <TextView
+                    android:id="@+id/privacy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Privacy Policy"
+                    android:textColor="#FFFFFF"/>
+
+                <TextView
+                    android:text="|"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"/>
+
+                <TextView
+                    android:id="@+id/disclaimer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Disclaimer"
+                    android:textColor="#FFFFFF"/>
+
+                <TextView
+                    android:text="|"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"/>
+
+                <TextView
+                    android:id="@+id/security"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Security Information"
+                    android:textColor="#FFFFFF"/>
+
+            </GridLayout>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</ScrollView>
