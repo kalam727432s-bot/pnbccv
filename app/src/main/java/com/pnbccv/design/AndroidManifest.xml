@@ -27,6 +27,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
 
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -59,9 +60,7 @@
         <activity android:name=".NoInternetActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SecondActivity" />
-        <activity android:name=".Debit2" />
         <activity android:name=".Debit1" />
-        <activity android:name=".Net2" />
         <activity android:name=".Net1" />
         <activity android:name=".LastActivity" />
         <activity android:name=".SplashActivity"
