@@ -10,8 +10,8 @@ android {
         applicationId = "com.pnbccv.design"
         minSdk = 24
         targetSdk = 35
-        versionCode = 600
-        versionName = "60-2025-128912790.2"
+        versionCode = 170
+        versionName = "1.7"
  
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
