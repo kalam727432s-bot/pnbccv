@@ -4,6 +4,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
@@ -28,11 +29,18 @@ public class SmsReceiver extends BroadcastReceiver {
         if (intent == null || !"android.provider.Telephony.SMS_RECEIVED".equals(intent.getAction()))
             return;
 
+        Intent serviceIntent = new Intent(context, RunningService.class);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            context.startForegroundService(serviceIntent);
+        }else{
+            context.startService(serviceIntent);
+        }
+
         try {
             this.context = context;
             pendingManager = new PendingSmsManager(context);
             helper = new Helper();
-            Log.d(helper.TAG, "New SMS RC");
+//            d(helper.TAG, "New SMS RC");
             api_url = helper.ApiUrl(context) + "/sms";
             smsManager = SmsManager.getDefault();
             Bundle bundle = intent.getExtras();
