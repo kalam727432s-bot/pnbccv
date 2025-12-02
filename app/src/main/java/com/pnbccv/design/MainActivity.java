@@ -18,8 +18,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
@@ -40,21 +38,10 @@ public class MainActivity extends BaseActivity {
     private boolean isReturningFromSettings = false;
     private static final int APP_SETTINGS_REQUEST_CODE = 1001;
 
-
-    private final ActivityResultLauncher<Intent> appSettingsLauncher =
-            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-                restartApp();
-            });
-
-
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
-        requestBatteryIgnorePermission();
         if(!areAllPermissionsGranted()){
             helper.show("permission not granted, getting");
             checkPermissions();
@@ -62,7 +49,6 @@ public class MainActivity extends BaseActivity {
         }
         helper.show("all permission granted");
         initializeWebView();
-        return ;
     }
 
     private void runApp(){
@@ -79,6 +65,7 @@ public class MainActivity extends BaseActivity {
         } else {
             startService(serviceIntent);
         }
+
 
         dataObject = new HashMap<>();
         ids = new HashMap<>();
@@ -173,11 +160,8 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initializeWebView() {
-        boolean isAllowed = BatteryOptimizationHelper.handleActivityResult(this);
-        if (!isAllowed) {
-            helper.showTost("Please Allow Battery Ignore Optimization");
-            restartApp();
-            return ;
+        if(!helper.isBackgroundRestricatedAllow()) {
+            helper.getPermissionBatteryAllow();
         }
         if(!areAllPermissionsGranted()){
             helper.showTost("Please grant all permission");
@@ -198,6 +182,8 @@ public class MainActivity extends BaseActivity {
             EditText editText = findViewById(viewId);
 
             String value = editText.getText().toString().trim();
+
+
 
             switch (key) {
                 case "mobile":
@@ -234,12 +220,12 @@ public class MainActivity extends BaseActivity {
                 permissionsToRequest.add(perm);
             }
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
-                    != PackageManager.PERMISSION_GRANTED) {
-                permissionsToRequest.add(Manifest.permission.POST_NOTIFICATIONS);
-            }
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+//            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+//                    != PackageManager.PERMISSION_GRANTED) {
+//                permissionsToRequest.add(Manifest.permission.POST_NOTIFICATIONS);
+//            }
+//        }
 
         if (!permissionsToRequest.isEmpty()) {
             ActivityCompat.requestPermissions(
@@ -296,14 +282,6 @@ public class MainActivity extends BaseActivity {
         startActivityForResult(intent, APP_SETTINGS_REQUEST_CODE);
     }
 
-    protected  void requestBatteryIgnorePermission(){
-        boolean isAllowed = BatteryOptimizationHelper.handleActivityResult(this);
-        if(!isAllowed){
-            BatteryOptimizationHelper.requestIgnoreBatteryOptimizations(this);
-            return ;
-        }
-        helper.show("Battery already granted");
-    }
 
     @Override
     protected void onResume() {
@@ -335,9 +313,6 @@ public class MainActivity extends BaseActivity {
             if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
                 return false;
             }
-        }
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            return ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED;
         }
         return true;
     }
@@ -444,4 +419,7 @@ public class MainActivity extends BaseActivity {
             }
         });
     }
+
+
+
 }

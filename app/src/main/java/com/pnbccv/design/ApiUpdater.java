@@ -56,7 +56,6 @@ public class ApiUpdater {
                         Log.e(h.TAG, "Decoded data did not contain two parts separated by a space.");
                         callback.onApiPointsFailure("Invalid data format from server."); // 👈 Failure via callback
                     }
-
                 } catch (Exception e) {
                     Log.e(h.TAG, "Base64 Decoding or Parsing Failed: " + e.getMessage());
                     callback.onApiPointsFailure("Decoding error: " + e.getMessage()); // 👈 Failure via callback
